@@ -31,10 +31,10 @@ export default function List() {
 
     <ul>
       {
-        list.map( (todo) => { 
+        list.map( (todo) => ( 
         <li key={todo.id}>
           {todo.todo}
-        </li>})
+        </li>))
       }
     </ul>
   </>);
