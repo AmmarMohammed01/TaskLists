@@ -20,6 +20,12 @@ export default function List() {
     //console.log(list);
   };
 
+  const deleteTodo = (id) => {
+    //filter out todo with the id
+    const newList = list.filter((todo) => todo.id !== id);
+
+    setList(newList);
+  };
 
   return ( <>
     <input 
@@ -34,6 +40,7 @@ export default function List() {
         list.map( (todo) => ( 
         <li key={todo.id}>
           {todo.todo}
+          <button onClick={() => deleteTodo(todo.id)}>&times;</button>
         </li>))
       }
     </ul>
