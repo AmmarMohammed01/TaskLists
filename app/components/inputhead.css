@@ -1,0 +1,9 @@
+.input-container {
+  background-color: bisque;
+  border: none;
+  border-radius: 10px;
+
+  padding: 20px 40px;
+  margin-left: 40px;
+  margin-right: 30px;
+}

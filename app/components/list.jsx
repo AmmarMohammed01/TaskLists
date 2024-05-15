@@ -1,22 +1,31 @@
 'use client';
 
 import { useState } from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { IoMdCheckmark } from "react-icons/io";
+import { MdEdit } from "react-icons/md";
+import "./task.css";
+import "./inputhead.css";
 
 export default function List() {
   const [list, setList] = useState([]);
-  const [text, setText] = useState("");
+  const [name, setName] = useState("");
+  const [des, setDes] = useState("");
 
-  const addTodo = (todo) => {
+  const addTodo = (name, description) => {
     const newTodo = {
       id: Math.random(),
-      todo: todo,
+      name: name,
+      description: description,
+      complete: false,
     };
 
     //add the todo to the list
-    setList([...list, newTodo]);
+    setList([...list, newTodo]); //the ... spreads out the elements of list so that it is like [todo1, todo2, todo3, ... , newTodo]. Without the ... we would have [[todo1, todo2, ...], newTodo]
 
     //clear input box
-    setText("");
+    setName("");
+    setDes("");
     //console.log(list);
   };
 
@@ -27,22 +36,46 @@ export default function List() {
     setList(newList);
   };
 
+  const renameTodo = (id) => {
+    //list[id] = 
+  };
+
+  const completeTodo = (id) => {
+    const index = list.indexOf(list.find((element) => element.id == id));
+    if (list[index].complete == false) {
+      list[index].complete = true;
+      console.log(list[index].name + " is complete");
+      document.getElementById(id).style["background-color"] = "rgb(20,200,20)";
+    } else {
+      list[index].complete = false;
+      console.log(list[index].name + " is incomplete");
+      document.getElementById(id).style["background-color"] = "";
+    }
+  };
+
   return ( <>
+  <div className="input-container">
     <input 
     type="text" 
-    value={text} 
-    onChange={e => setText(e.target.value)}
-    />
-    <button onClick={() => addTodo(text)}>Add</button>
+    value={name} 
+    onChange={e => setName(e.target.value)}
+    placeholder="Type task name..."
+    required/>
+    <input type="text" value={des} onChange={e => setDes(e.target.value)} placeholder="Type task description..." required/>
+    <button onClick={() => addTodo(name, des)}>Add</button>
+  </div>
 
-    <ul>
-      {
-        list.map( (todo) => ( 
-        <li key={todo.id}>
-          {todo.todo}
-          <button onClick={() => deleteTodo(todo.id)}>&times;</button>
-        </li>))
-      }
-    </ul>
+  <ul>
+    {
+      list.map( (todo) => ( 
+      <li key={todo.id} className="todo-container">
+        <div className="todo-title">{todo.name}</div>
+        <div className="todo-description">{todo.description}</div>
+        <button onClick={() => renameTodo(todo.id)}><MdEdit /></button>
+        <button onClick={() => deleteTodo(todo.id)}><FaRegTrashAlt /></button>
+        <button id={todo.id} onClick={() => completeTodo(todo.id)}><IoMdCheckmark /></button>
+      </li>))
+    }
+  </ul>
   </>);
 }
