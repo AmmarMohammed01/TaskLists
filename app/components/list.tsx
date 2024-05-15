@@ -6,11 +6,17 @@ import { useState } from "react";
 export default function List() {
   const [list, setList] = useState("");
 
-  return (
-    <>
-      <p>{list}</p>
-      <input placeholder="Type Time and Task Here" onChange={e => setList(e.target.value)}></input>
-      <button>Submit</button>
-    </>
-  );
+  function daily(formData : any) {
+    const task = formData.get("task");
+    //alert(`You searched for '${task}'`);
+    setList(task);
+    console.log(list);
+  }
+  return ( <>
+    <p>{list}</p>
+    <form action={daily}>
+      <input name="task" />
+      <button type="submit">Search</button>
+    </form>
+  </>);
 }
