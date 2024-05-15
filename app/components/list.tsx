@@ -1,6 +1,5 @@
 'use client';
-//https://react.dev/reference/react-dom/components/input
-//https://react.dev/reference/react-dom/components/form
+
 import { useState } from "react";
 
 export default function List() {
@@ -10,7 +9,6 @@ export default function List() {
     const task = formData.get("task");
     //alert(`You searched for '${task}'`);
     setList(task);
-    console.log(list);
   }
   return ( <>
     <p>{list}</p>
