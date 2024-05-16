@@ -37,7 +37,12 @@ export default function List() {
   };
 
   const renameTodo = (id) => {
-    //list[id] = 
+    //const inputName = document.querySelector("js-name");
+    //const inputDes = document.querySelector("js-des");
+    if(document.getElementById("edit" + id).style["background-color"] == "")
+      document.getElementById("edit" + id).style["background-color"] = "red";
+    else
+      document.getElementById("edit" + id).style["background-color"] = "";
   };
 
   const completeTodo = (id) => {
@@ -45,11 +50,11 @@ export default function List() {
     if (list[index].complete == false) {
       list[index].complete = true;
       console.log(list[index].name + " is complete");
-      document.getElementById(id).style["background-color"] = "rgb(20,200,20)";
+      document.getElementById("check" + id).style["background-color"] = "rgb(20,200,20)";
     } else {
       list[index].complete = false;
       console.log(list[index].name + " is incomplete");
-      document.getElementById(id).style["background-color"] = "";
+      document.getElementById("check" + id).style["background-color"] = "";
     }
   };
 
@@ -60,9 +65,9 @@ export default function List() {
     value={name} 
     onChange={e => setName(e.target.value)}
     placeholder="Type task name..."
-    className="todo-input"
+    className="todo-input js-name"
     onKeyDown={(e) => {if(e.key === "Enter") {addTodo(name, des)} }}/>
-    <input type="text" value={des} onChange={e => setDes(e.target.value)} placeholder="Type task description..." className="todo-input" onKeyDown={(e) => {if(e.key === "Enter") {addTodo(name, des)} }}/>
+    <input type="text" value={des} onChange={e => setDes(e.target.value)} placeholder="Type task description..." className="todo-input js-des" onKeyDown={(e) => {if(e.key === "Enter") {addTodo(name, des)} }}/>
     <button onClick={() => addTodo(name, des)} className="todo-add-button">Add</button>
   </div>
 
@@ -77,9 +82,9 @@ export default function List() {
           {todo.description}
         </div>
         <div className="todo-buttons-container">
-          <button onClick={() => renameTodo(todo.id)} className="todo-buttons"><MdEdit /></button>
+          <button id={"edit" + todo.id}onClick={() => renameTodo(todo.id)} className="todo-buttons"><MdEdit /></button>
           <button onClick={() => deleteTodo(todo.id)} className="todo-buttons"><FaRegTrashAlt /></button>
-          <button id={todo.id} onClick={() => completeTodo(todo.id)} className="todo-buttons"><IoMdCheckmark /></button>
+          <button id={"check" + todo.id} onClick={() => completeTodo(todo.id)} className="todo-buttons"><IoMdCheckmark /></button>
         </div>
       </li>))
     }
