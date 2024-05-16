@@ -26,3 +26,4 @@ How to host React App on GitHub pages
 https://www.youtube.com/watch?v=Q9n2mLqXFpU
 
 how to deploy a nextjs app to github pages
+https://www.youtube.com/watch?v=WoL3xbkAfOU
