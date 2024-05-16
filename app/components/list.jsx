@@ -12,6 +12,10 @@ export default function List() {
   const [name, setName] = useState("");
   const [des, setDes] = useState("");
 
+  // console.log(JSON.parse(localStorage.getItem("list")));
+  // if(JSON.parse(localStorage.getItem("list")) !== null)
+  //   setList(JSON.parse(localStorage.getItem("list")));
+
   const addTodo = (name, description) => {
     const newTodo = {
       id: Math.random(),
@@ -22,6 +26,9 @@ export default function List() {
 
     //add the todo to the list
     setList([...list, newTodo]); //the ... spreads out the elements of list so that it is like [todo1, todo2, todo3, ... , newTodo]. Without the ... we would have [[todo1, todo2, ...], newTodo]
+    console.log("List: " + list);
+    localStorage.setItem("list", JSON.stringify(list));
+    console.log(JSON.parse(localStorage.getItem("list")));
 
     //clear input box
     setName("");
@@ -34,6 +41,8 @@ export default function List() {
     const newList = list.filter((todo) => todo.id !== id);
 
     setList(newList);
+    localStorage.setItem("list", JSON.stringify(list));
+    console.log(JSON.parse(localStorage.getItem("list")));
   };
 
   const renameTodo = (id) => {
@@ -57,6 +66,11 @@ export default function List() {
       document.getElementById("check" + id).style["background-color"] = "";
     }
   };
+
+  const clearAll = () => {
+    setList([]);
+    localStorage.setItem("list", JSON.stringify(list));
+  }
 
   return ( <>
   <div className="input-container">
@@ -89,5 +103,7 @@ export default function List() {
       </li>))
     }
   </ul>
+
+  <button onClick={() => clearAll()}>Clear All Data</button>
   </>);
 }
