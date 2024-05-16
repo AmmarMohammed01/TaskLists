@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
@@ -8,9 +8,16 @@ import "./task.css";
 import "./inputhead.css";
 
 export default function List() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(() => {
+    const localValue = localStorage.getItem("list");
+    if(localValue == null) return []
+
+    return JSON.parse(localValue)
+  });
   const [name, setName] = useState("");
   const [des, setDes] = useState("");
+
+  useEffect(() => {localStorage.setItem("list", JSON.stringify(list))}, [list])
 
   // console.log(JSON.parse(localStorage.getItem("list")));
   // if(JSON.parse(localStorage.getItem("list")) !== null)
@@ -26,9 +33,6 @@ export default function List() {
 
     //add the todo to the list
     setList([...list, newTodo]); //the ... spreads out the elements of list so that it is like [todo1, todo2, todo3, ... , newTodo]. Without the ... we would have [[todo1, todo2, ...], newTodo]
-    console.log("List: " + list);
-    localStorage.setItem("list", JSON.stringify(list));
-    console.log(JSON.parse(localStorage.getItem("list")));
 
     //clear input box
     setName("");
@@ -41,8 +45,6 @@ export default function List() {
     const newList = list.filter((todo) => todo.id !== id);
 
     setList(newList);
-    localStorage.setItem("list", JSON.stringify(list));
-    console.log(JSON.parse(localStorage.getItem("list")));
   };
 
   const renameTodo = (id) => {
@@ -69,7 +71,6 @@ export default function List() {
 
   const clearAll = () => {
     setList([]);
-    localStorage.setItem("list", JSON.stringify(list));
   }
 
   return ( <>

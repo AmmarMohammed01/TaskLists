@@ -18,3 +18,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 onKeyDown enter submit text
 https://www.geeksforgeeks.org/how-to-get-the-enter-key-in-reactjs/
+
+localStorage with useEffect
+https://www.youtube.com/watch?v=Rh3tobg7hEo
