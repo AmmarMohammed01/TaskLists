@@ -21,21 +21,21 @@
 }
 
 .todo-add-button {
-  background-color: rgb(0, 90, 255);
+  background-color: rgb(0, 162, 255);
   color: white;
-  border: solid;
+  border: none;
   border-color: rgb(190, 190, 190);
   border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 5px rgb(255,255,255);
   transition-duration: 0.2s;
 }
 
 .todo-add-button:hover {
-  background-color: rgb(0, 100, 255);
+  box-shadow: 0px 0px 15px rgb(255,255,255);
 }
 
 .todo-add-button:active {
-  background-color: rgb(0, 90, 255);
+  background-color: rgb(90, 147, 255);
 }
 
 .clear-center {
