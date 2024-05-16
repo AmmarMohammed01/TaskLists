@@ -3,7 +3,7 @@
   grid-template-columns: 5fr 5fr 1fr;
   place-content: center;
 
-  background-color: bisque;
+  background-color: rgb(40, 65, 189);
   border: none;
   border-radius: 10px;
 

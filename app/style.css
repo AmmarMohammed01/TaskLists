@@ -1,7 +1,8 @@
 .app-title {
   text-align: center;
   margin: 20px 20px;
-  font-size: 75px;
+  font-size: 50px;
+  font-weight: bold;
   text-shadow: 5px 5px 5px rgba(0,0,255,0.2);
 }
 
