@@ -60,20 +60,27 @@ export default function List() {
     value={name} 
     onChange={e => setName(e.target.value)}
     placeholder="Type task name..."
-    required/>
-    <input type="text" value={des} onChange={e => setDes(e.target.value)} placeholder="Type task description..." required/>
-    <button onClick={() => addTodo(name, des)}>Add</button>
+    className="todo-input"
+    onKeyDown={(e) => {if(e.key === "Enter") {addTodo(name, des)} }}/>
+    <input type="text" value={des} onChange={e => setDes(e.target.value)} placeholder="Type task description..." className="todo-input" onKeyDown={(e) => {if(e.key === "Enter") {addTodo(name, des)} }}/>
+    <button onClick={() => addTodo(name, des)} className="todo-add-button">Add</button>
   </div>
 
   <ul>
     {
       list.map( (todo) => ( 
       <li key={todo.id} className="todo-container">
-        <div className="todo-title">{todo.name}</div>
-        <div className="todo-description">{todo.description}</div>
-        <button onClick={() => renameTodo(todo.id)}><MdEdit /></button>
-        <button onClick={() => deleteTodo(todo.id)}><FaRegTrashAlt /></button>
-        <button id={todo.id} onClick={() => completeTodo(todo.id)}><IoMdCheckmark /></button>
+        <div className="todo-title">
+          {todo.name}
+        </div>
+        <div className="todo-description">
+          {todo.description}
+        </div>
+        <div className="todo-buttons-container">
+          <button onClick={() => renameTodo(todo.id)} className="todo-buttons"><MdEdit /></button>
+          <button onClick={() => deleteTodo(todo.id)} className="todo-buttons"><FaRegTrashAlt /></button>
+          <button id={todo.id} onClick={() => completeTodo(todo.id)} className="todo-buttons"><IoMdCheckmark /></button>
+        </div>
       </li>))
     }
   </ul>

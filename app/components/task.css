@@ -18,9 +18,20 @@
   color: blue;
   font-size: 20px;
   font-weight: bold;
+  margin: 0px;
 }
 
 .todo-description {
   color:coral;
   font-style: italic;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.todo-buttons-container {
+  margin-top: 10px;
+}
+
+.todo-buttons {
+  margin-right: 2px;
 }
