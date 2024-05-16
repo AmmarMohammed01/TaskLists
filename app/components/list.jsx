@@ -115,6 +115,12 @@ export default function List() {
     }
   </ul>
 
-  <button onClick={() => clearAll()}>Clear All Data</button>
+  <div className="clear-center">
+    <div></div>
+    <div>
+      <button className="todo-clear-button" onClick={() => clearAll()}>Clear All Data</button>
+    </div>
+    
+  </div>
   </>);
 }

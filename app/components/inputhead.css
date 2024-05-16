@@ -21,17 +21,50 @@
 }
 
 .todo-add-button {
-  background-color: white;
-  border: none;
+  background-color: rgb(0, 90, 255);
+  color: white;
+  border: solid;
+  border-color: rgb(190, 190, 190);
   border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
   transition-duration: 0.2s;
 }
 
 .todo-add-button:hover {
-  background-color: rgb(225, 225, 225);
+  background-color: rgb(0, 100, 255);
 }
 
 .todo-add-button:active {
-  background-color: rgb(130, 130, 255);
+  background-color: rgb(0, 90, 255);
+}
+
+.clear-center {
+  display: grid;
+  grid-template-columns: 1fr 200px 1fr;
+  place-items: center;
+}
+
+.todo-clear-button {
+  border: none;
+  border-radius: 10px;
+  border-color: rgb(250, 0, 0);
+  background-color: white;
+  color: rgb(250, 0, 0);
+  padding: 10px;
+
+  box-shadow: 0px 0px 5px rgb(210, 0, 0);
+  transition-duration: .2s, .5s;
+  transition-property: background-color, box-shadow;
+}
+
+.todo-clear-button:hover {
+  background-color: rgb(250, 0, 0);
+  box-shadow: 0px 0px 15px rgb(150, 0, 0);
+  color: white;
+}
+
+.todo-clear-button:active {
+  background-color: rgb(200, 0, 0);
+  color: white;
+  border-color: rgb(200, 0, 0);
 }
