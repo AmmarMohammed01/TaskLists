@@ -9,15 +9,25 @@ import "./inputhead.css";
 
 export default function List() {
   const [list, setList] = useState(() => {
-    const localValue = localStorage.getItem("list");
-    if(localValue == null) return []
+    if(typeof window !== 'undefined') { //Handles localStorage not defined, 3 lines below are old code
+      const localValue = localStorage.getItem("list");
+      if(localValue == null) return [];
 
-    return JSON.parse(localValue)
+      return JSON.parse(localValue);
+    }
+    else { //Handles localStorage not defined
+      return [];
+    }
+    
   });
   const [name, setName] = useState("");
   const [des, setDes] = useState("");
 
-  useEffect(() => {localStorage.setItem("list", JSON.stringify(list))}, [list])
+  useEffect(() => {
+    if(typeof window !== 'undefined') { //if branch around original code to fix localStorage not defined
+      localStorage.setItem("list", JSON.stringify(list))
+    }
+  }, [list])
 
   // console.log(JSON.parse(localStorage.getItem("list")));
   // if(JSON.parse(localStorage.getItem("list")) !== null)
