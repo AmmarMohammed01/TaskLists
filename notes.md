@@ -21,3 +21,8 @@ https://www.geeksforgeeks.org/how-to-get-the-enter-key-in-reactjs/
 
 localStorage with useEffect
 https://www.youtube.com/watch?v=Rh3tobg7hEo
+
+How to host React App on GitHub pages
+https://www.youtube.com/watch?v=Q9n2mLqXFpU
+
+how to deploy a nextjs app to github pages
