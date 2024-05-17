@@ -24,6 +24,7 @@ export default function List() {
   const [name, setName] = useState("");
   const [des, setDes] = useState("");
   const [check, setCheck] = useState(0);
+  const [currentEdit, setCurrentEdit] = useState("");
 
   useEffect(() => {
     if(typeof window !== 'undefined') { //if branch around original code to fix localStorage not defined
@@ -67,15 +68,6 @@ export default function List() {
     setList(newList);
   };
 
-  const renameTodo = (id) => {
-    //const inputName = document.querySelector("js-name");
-    //const inputDes = document.querySelector("js-des");
-    if(document.getElementById("edit" + id).style["background-color"] == "")
-      document.getElementById("edit" + id).style["background-color"] = "red";
-    else
-      document.getElementById("edit" + id).style["background-color"] = "";
-  };
-
   const completeTodo = (id) => {
     const index = list.indexOf(list.find((element) => element.id == id));
     if (list[index].complete === false) {
@@ -96,7 +88,15 @@ export default function List() {
 
   const clearAll = () => {
     setList([]);
-  }
+  };
+
+  const renameTodo = (id) => {
+    // if(document.getElementById("edit" + id).style["background-color"] == "azure")
+    //   document.getElementById("edit" + id).style["background-color"] = "red";
+    // else
+    //   document.getElementById("edit" + id).style["background-color"] = "azure";
+
+  };
 
   return ( <>
   <div className="input-container">
@@ -113,21 +113,31 @@ export default function List() {
 
   <ul>
     {
-      list.map( (todo) => ( 
-      <li key={todo.id} className="todo-container">
-        <div className="todo-title">
-          {todo.name}
-        </div>
-        <div className="todo-description">
-          {todo.description}
-        </div>
-        <div className="todo-buttons-container">
-          <button id={"edit" + todo.id}onClick={() => renameTodo(todo.id)} className="todo-buttons"><MdEdit /></button>
-          <button onClick={() => deleteTodo(todo.id)} className="todo-buttons"><FaRegTrashAlt /></button>
-          {/*console.log(todo.complete)*/}
-          <button id={"check" + todo.id} onClick={() => completeTodo(todo.id)} className={todo.complete.toString()}><IoMdCheckmark /></button>
-        </div>
-      </li>))
+      list.map( (todo) => { 
+        if(currentEdit === todo.id) {
+          return (<>
+          <p>hi</p>
+          </>)
+        }
+        else {
+          return(<>
+            <li key={todo.id} className="todo-container">
+              <div className="todo-title">
+                {todo.name}
+              </div>
+              <div className="todo-description">
+                {todo.description}
+              </div>
+              <div className="todo-buttons-container">
+                <button id={"edit" + todo.id}onClick={() => setCurrentEdit(todo.id)} className="todo-buttons"><MdEdit /></button>
+                <button onClick={() => deleteTodo(todo.id)} className="todo-buttons"><FaRegTrashAlt /></button>
+                {/*console.log(todo.complete)*/}
+                <button id={"check" + todo.id} onClick={() => completeTodo(todo.id)} className={todo.complete.toString()}><IoMdCheckmark /></button>
+              </div>
+            </li>
+          </>)
+        }
+      })
     }
   </ul>
 
