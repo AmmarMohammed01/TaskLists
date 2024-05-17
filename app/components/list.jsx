@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
@@ -13,6 +13,7 @@ export default function List() {
       const localValue = localStorage.getItem("list");
       if(localValue == null) return [];
 
+      //console.log(JSON.parse(localValue)); //test check color
       return JSON.parse(localValue);
     }
     else { //Handles localStorage not defined
@@ -22,13 +23,22 @@ export default function List() {
   });
   const [name, setName] = useState("");
   const [des, setDes] = useState("");
+  const [check, setCheck] = useState(0);
 
   useEffect(() => {
     if(typeof window !== 'undefined') { //if branch around original code to fix localStorage not defined
       localStorage.setItem("list", JSON.stringify(list))
+      console.log("HERE1"); //test check color
     }
   }, [list])
 
+  useEffect(() => {
+    if(typeof window !== 'undefined') { //if branch around original code to fix localStorage not defined
+      localStorage.setItem("list", JSON.stringify(list))
+      console.log("HERE2"); //test check color
+      console.log(list); //test check color
+    }
+  }, [check])
   // console.log(JSON.parse(localStorage.getItem("list")));
   // if(JSON.parse(localStorage.getItem("list")) !== null)
   //   setList(JSON.parse(localStorage.getItem("list")));
@@ -68,14 +78,19 @@ export default function List() {
 
   const completeTodo = (id) => {
     const index = list.indexOf(list.find((element) => element.id == id));
-    if (list[index].complete == false) {
+    if (list[index].complete === false) {
       list[index].complete = true;
-      console.log(list[index].name + " is complete");
+      setCheck(check + 1);
+      console.log(list[index].name + " is complete: " + list[index].complete);
       document.getElementById("check" + id).style["background-color"] = "rgb(20,200,20)";
+      //console.log(list);
+      //setList(list);
     } else {
       list[index].complete = false;
-      console.log(list[index].name + " is incomplete");
-      document.getElementById("check" + id).style["background-color"] = "";
+      setCheck(check + 1);
+      console.log(list[index].name + " is complete: " + list[index].complete);
+      document.getElementById("check" + id).style["background-color"] = "azure";
+      //setList(list);
     }
   };
 
@@ -109,7 +124,8 @@ export default function List() {
         <div className="todo-buttons-container">
           <button id={"edit" + todo.id}onClick={() => renameTodo(todo.id)} className="todo-buttons"><MdEdit /></button>
           <button onClick={() => deleteTodo(todo.id)} className="todo-buttons"><FaRegTrashAlt /></button>
-          <button id={"check" + todo.id} onClick={() => completeTodo(todo.id)} className="todo-buttons"><IoMdCheckmark /></button>
+          {/*console.log(todo.complete)*/}
+          <button id={"check" + todo.id} onClick={() => completeTodo(todo.id)} className={todo.complete.toString()}><IoMdCheckmark /></button>
         </div>
       </li>))
     }
