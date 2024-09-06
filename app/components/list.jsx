@@ -111,19 +111,21 @@ export default function List() {
 
   };
 
+  //WORK IN PROGRESS (WIP) - EDIT FEATURE
   const handleUpdateTitle = (value) => {
     setEditTitle( (prev) => {
-      console.log(prev);
+      //console.log("one: " + JSON.stringify(prev));
+      console.log("two: " + JSON.stringify({...prev,editTitle}));
       return {...prev,name:value}
     })
   };
 
+  //WORK IN PROGRESS (WIP) - EDIT FEATURE
   const handleUpdateDescription = (value) => {
     setEditDes( (prev) => {
       return {...prev,description:value}
     })
   };
-
 
 
   return ( <>
@@ -152,10 +154,10 @@ export default function List() {
           return (<>
             <li key={todo.id} className="todo-container">
               <input className="todo-edit-title" placeholder="Type new title here" onChange={e => handleUpdateTitle(e.target.value)} value={currentEdit.name}/>
+
               <textarea className="todo-edit-description" placeholder="Type new description here" value={currentEdit.description} rows={5} onChange={e => handleUpdateDescription(e.target.value)}/>
-              <div className="todo-buttons-container">
-                <button>Update</button>
-              </div>
+
+              <div className="todo-buttons-container"> <button>Update</button> </div>
             </li>
           </>)
         }
@@ -171,7 +173,7 @@ export default function List() {
 
                 {/*console.log(todo.complete)*/}
                 <button id={"check" + todo.id} onClick={() => completeTodo(todo.id)} className={todo.complete.toString()}> <IoMdCheckmark /> </button>
-                <button id={"edit" + todo.id}onClick={() => setCurrentEdit(todo)} className="todo-buttons"> <MdEdit /> </button>
+                <button id={"edit" + todo.id} onClick={() => setCurrentEdit(todo)} className="todo-buttons"> <MdEdit /> </button>
                 <button onClick={() => deleteTodo(todo.id)} className="todo-buttons"><FaRegTrashAlt /></button>
                 
               </div>
