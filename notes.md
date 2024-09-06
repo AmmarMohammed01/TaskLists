@@ -26,3 +26,6 @@ https://www.youtube.com/watch?v=Q9n2mLqXFpU
 
 how to deploy a nextjs app to github pages
 https://www.youtube.com/watch?v=WoL3xbkAfOU
+
+"Buttons shifting with on hover"
+https://forum.freecodecamp.org/t/buttons-shifting-with-on-hover/442685
