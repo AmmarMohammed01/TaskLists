@@ -8,7 +8,6 @@ A singular video (MAIN SOURCE): //https://www.youtube.com/watch?v=MXId-Ae6k_I
 
 https://www.youtube.com/watch?v=nUl5QLkVdvU
 
-Playlist: //https://youtube.com/playlist?list=PLg8h8Ej1e8l3YF-GTW1gxmDISO-qt_RSk&si=0FwNusOGGCblJpdc
 https://react-icons.github.io/
 npm i react-icons
 
@@ -27,3 +26,6 @@ https://www.youtube.com/watch?v=Q9n2mLqXFpU
 
 how to deploy a nextjs app to github pages
 https://www.youtube.com/watch?v=WoL3xbkAfOU
+
+"Buttons shifting with on hover"
+https://forum.freecodecamp.org/t/buttons-shifting-with-on-hover/442685

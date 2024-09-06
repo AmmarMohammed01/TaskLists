@@ -55,7 +55,25 @@
   background-attachment: azure;
 }
 
-.todo-buttons:hover {
+.todo-buttons:hover, .true:hover, .false:hover {
   /*background-color: rgb(220, 255,255);*/
   box-shadow: 0px 0px 10px rgb(0, 50, 140);
+}
+
+.todo-edit-title {
+  border: none;
+  border-radius: 10px;
+  padding:5px 10px;
+  display: block;
+  height:20px;
+  width: 70vw;
+  margin-bottom: 10px;
+}
+
+.todo-edit-description {
+  display: block;
+  border:none;
+  border-radius: 10px;
+  padding:5px 10px;
+  width: 70vw;
 }
